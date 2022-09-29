@@ -58,9 +58,11 @@ char enter_action()
 {
     char ch;
     std::cout << "Enter an action: ";
+    //if (std::cin.rdbuf()->in_avail() != 1))
     std::cin >> ch;
     while (ch != '-' && ch != '+' && ch != '*' && ch != '/' && ch != 'C' && ch != 'c' && ch != 'Q' && ch != 'q')
     {
+        std::cout << std::cin.rdbuf()->in_avail();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Enter right action. Try again: ";
         std::cin >> ch;
