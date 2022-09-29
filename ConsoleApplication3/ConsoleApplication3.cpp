@@ -65,6 +65,7 @@ char enter_action()
         std::cout << "Enter right action. Try again: ";
         std::cin >> ch;
     }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     return ch;
 }
 
