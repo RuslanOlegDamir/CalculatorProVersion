@@ -30,7 +30,7 @@ int main()
         else
         {
             second_number = enter_a_number();
-            result = calculate(first_number, second_number, action);
+            result += calculate(first_number, second_number, action);
         }
     } while (action != 'Q' && action != 'q');
 
