@@ -16,35 +16,33 @@ int main()
 
     do
     {
-        first_number = enter_a_number();
-        action = enter_action();
-        if (action == 'q' || action == 'Q')
+        first_number = enter_a_number(); //Получаем первое число
+        action = enter_action(); // Получаем арифметический знак
+        if (action == 'q' || action == 'Q') // Проверяем наличие ключевого символва
         {
             break;
         }
-        else if (action == 'c' || action == 'C')
+        else if (action == 'c' || action == 'C') // Проверяем наличие ключевого символва
         {
-            std::cout << "Clear!" << std::endl;
+            std::cout << "Clear!" << std::endl; // Очищаем результат согласно условию
             result = 0;
         }
         else
         {
-            second_number = enter_a_number();
-            result += calculate(first_number, second_number, action);
+            second_number = enter_a_number(); //Получаем второе число
+            result += calculate(first_number, second_number, action); // Обновляем результат
         }
-    } while (action != 'Q' && action != 'q');
+    } while (action != 'Q' && action != 'q'); //Повторяем действие пока не получим ключевое значение 
 
-    std::cout << "Last result is " << result;
+    std::cout << "Last result is " << result; //Выводим результат
 
     return 0;
 }
-
-
 int enter_a_number()
 {
-    int a;
-    std::cout << "Enter a number: ";
-    while (!(std::cin >> a))
+    int a; // Объявляем переменную 
+    std::cout << "Enter a number: "; // Вывод сообщения на экран
+    while (!(std::cin >> a)) // Получаем данные при вводе, проверяем что бы вводилось число
     {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -53,14 +51,12 @@ int enter_a_number()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     return a;
 }
-
 char enter_action()
 {
-    char ch;
-    std::cout << "Enter an action: ";
-    //if (std::cin.rdbuf()->in_avail() != 1))
-    std::cin >> ch;
-    while (ch != '-' && ch != '+' && ch != '*' && ch != '/' && ch != 'C' && ch != 'c' && ch != 'Q' && ch != 'q')
+    char ch; // Объявляем переменную 
+    std::cout << "Enter an action: ";// Вывод сообщения на экран
+    std::cin >> ch; // Получаем данные при вводе
+    while (ch != '-' && ch != '+' && ch != '*' && ch != '/' && ch != 'C' && ch != 'c' && ch != 'Q' && ch != 'q') // Проверяем правильность введенного значения
     {
         std::cout << std::cin.rdbuf()->in_avail();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -70,11 +66,10 @@ char enter_action()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     return ch;
 }
-
 int calculate(int a, int b, char ch)
 {
-    int res = 0;
-    switch (ch)
+    int res = 0; // Оюъявляем переменную 
+    switch (ch) // С помощью данной конструкции делаем нужные арифметические действия 
     {
     case '-': res = a - b; std::cout << a << " - " << b << " = " << res << std::endl; break;
     case '+': res = a + b; std::cout << a << " + " << b << " = " << res << std::endl; break;
@@ -82,5 +77,5 @@ int calculate(int a, int b, char ch)
     case '/': res = a / b; std::cout << a << " / " << b << " = " << res << std::endl; break;
     default: std::cout << "Something goes wrong :(" << std::endl;
     }
-    return res;
+    return res; // Возвращаем результат
 }
