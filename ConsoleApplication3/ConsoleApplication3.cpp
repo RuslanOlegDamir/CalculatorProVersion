@@ -45,10 +45,10 @@ int enter_a_number()
     while (!(std::cin >> a)) // Получаем данные при вводе, проверяем что бы вводилось число
     {
         std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Enter a number. Try again human: ";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //перебирает поток cin до переноса каретки и начинает  принимать новую информацию в поток
+        std::cout << "Enter a number. Try again human: "; //выводит сообщение об ошибке
     }
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // перебирает поток cin до переноса каретки и начинает  принимать новую информацию в поток
     return a;
 }
 char enter_action()
@@ -59,16 +59,16 @@ char enter_action()
     while (ch != '-' && ch != '+' && ch != '*' && ch != '/' && ch != 'C' && ch != 'c' && ch != 'Q' && ch != 'q') // Проверяем правильность введенного значения
     {
         std::cout << std::cin.rdbuf()->in_avail();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Enter right action. Try again: ";
-        std::cin >> ch;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //перебирает поток cin до переноса каретки и начинает  принимать новую информацию в поток
+        std::cout << "Enter right action. Try again: "; // выводит сообщение об ошибке
+        std::cin >> ch; 
     }
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     return ch;
 }
 int calculate(int a, int b, char ch)
 {
-    int res = 0; // Оюъявляем переменную 
+    int res = 0; // Объявляем переменную 
     switch (ch) // С помощью данной конструкции делаем нужные арифметические действия 
     {
     case '-': res = a - b; std::cout << a << " - " << b << " = " << res << std::endl; break;
